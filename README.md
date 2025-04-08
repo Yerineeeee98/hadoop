@@ -33,9 +33,9 @@
 
 # 2025.04.08 
 - windows/system32/drivers/etc/hosts(맨위에 파일)
-    - ![alt text](/damf2/hadoop/img/image.png) 여기서 yerin. 가져오기 
+    - ![alt text](img/image.png) 여기서 yerin. 가져오기 
     - 127.0.0.1 yerin. vscode로 실행해서 저장하기
-    - ![alt text](/damf2/hadoop/img/image-1.png) 
+    - ![alt text](img/image-1.png) 
     - 그럼 이렇게 데이터를 볼 수 있음   
 - 하둡은 데이터를 수정 할 수 없음 (추가는 가능)
 
@@ -63,7 +63,7 @@
         - (단어, [1, 1, 1, 1]) → 단어의 총 개수: 4
 
 
-- ![alt text](/damf2/hadoop/img/image-2.png)
+- ![alt text](img/image-2.png)
     - `mapper.py`에서 
         - ```python
             # 데이터를 쪼개는 역할
@@ -77,7 +77,7 @@
                 for word in words:
                  print(f'{word}\t1') #\t:한줄씩 내려쓰기 
             ```
-    - `cat text.txt | python3 mapper.py`로 출력해보면 ![alt text](/damf2/hadoop/img/image-3.png)
+    - `cat text.txt | python3 mapper.py`로 출력해보면 ![alt text](img/image-3.png)
     - `reducer.py`에서
         - ```python
             import sys
@@ -109,14 +109,14 @@
             if last_word == word:
                 print(f'{last_word}\t{total_count}')
             ```
-- ![alt text](/damf2/hadoop/img/image-4.png)
-- ![alt text](/damf2/hadoop/img/image-5.png)
+- ![alt text](img/image-4.png)
+- ![alt text](img/image-5.png)
 - 여기서 터미널에 명령어 
     - `hadoop jar ~/hadoop-3.3.6/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar\
  -input /input/text.txt \
  -output /output/wordcount \
  -mapper 'python3 /home/ubuntu/damf2/hadoop/0.wordcount/mapper.py' \
- -reducer 'python3 /home/ubuntu/damf2/hadoop/0.wordcount/reducer.py'`를 실행하면 `http://localhost:9870/explorer.html#/output/wordcount`에서![alt text](image.png) 이러한 결과가 나옴
+ -reducer 'python3 /home/ubuntu/damf2/hadoop/0.wordcount/reducer.py'`를 실행하면 `http://localhost:9870/explorer.html#/output/wordcount`에서![alt text](image-6.png) 이러한 결과가 나옴
 
 ---
 ## hadoop version
@@ -198,4 +198,4 @@
  -output /output/movie-rate-avg \
  -mapper 'python3 /home/ubuntu/damf2/hadoop/1.movie-rate-avg/mapper.py' \
  -reducer 'python3 /home/ubuntu/damf2/hadoop/1.movie-rate-avg/reducer.py'`
-- http://localhost:9870/explorer.html#/output 에서 ![alt text](image-1.png) 이러한 결과가 나옴 
+- http://localhost:9870/explorer.html#/output 에서 ![alt text](image-7.png) 이러한 결과가 나옴 
